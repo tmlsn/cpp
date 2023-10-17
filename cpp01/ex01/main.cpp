@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 16:50:23 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/17 20:55:35 by tmalless         ###   ########.fr       */
+/*   Created: 2023/10/03 16:53:40 by tmalless          #+#    #+#             */
+/*   Updated: 2023/10/17 21:36:18 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void randomChump( std::string name )
+int main(void)
 {
-	Zombie Zombie(name);
-	Zombie.announce();
+	Zombie *horde = zombieHorde(5, "Bob");
+
+	for (int i = 0; i < 5; i++)
+	{
+		horde[i].announce();
+	}
+
+	delete [] horde;
+	
+	return (1);
 }

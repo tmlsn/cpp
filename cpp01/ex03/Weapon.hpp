@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 16:50:23 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/17 20:55:35 by tmalless         ###   ########.fr       */
+/*   Created: 2023/10/17 21:54:43 by tmalless          #+#    #+#             */
+/*   Updated: 2023/10/18 00:44:03 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-void randomChump( std::string name )
+#include <iostream>
+
+class Weapon
 {
-	Zombie Zombie(name);
-	Zombie.announce();
-}
+	private :
+	std::string type;
+
+	public :
+	Weapon(std::string type);
+	void setType(std::string type);
+	std::string getType();
+	~Weapon();
+	
+};
+
+#endif
