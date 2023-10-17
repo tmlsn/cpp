@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:32:51 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/03 16:53:35 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:32:01 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Zombie::Zombie(std::string name)
 
 void Zombie::announce(void)
 {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ...";
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ...\n";
 }
 
 Zombie::~Zombie()
