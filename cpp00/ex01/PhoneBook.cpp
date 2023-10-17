@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:09:36 by tmalless          #+#    #+#             */
-/*   Updated: 2023/05/04 17:53:49 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/06/29 20:19:26 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,15 @@ void PhoneBook::add()
 	this->rep[this->c_number % 8].setNickName(info);
 	std::cout << "Phone Number :\n";
 	std::cin >> info;
-	while (check_phoneNumber(info))
+	while (check_phoneNumber(info) && !std::cin.eof())
 	{
-		std::cout << "Wrong format, try again :\n";
-		std::cin >> info;
+		/* if (std::cin.eof())
+			return ;
+		else
+		{ */
+			std::cout << "Wrong format, try again :\n";
+			std::cin >> info;
+		//}
 	}
 	this->rep[this->c_number % 8].setPhoneNumber(info);
 	std::cout << "Darkest Secret :\n";
@@ -94,7 +99,7 @@ void PhoneBook::search()
 	int i = 0;
 	std::string index;
 
-	if (c_number == 0)
+	if (c_number == 0 && !std::cin.eof())
 	{
 		std::cout << "There is no contact to display, create a contact first.\n";
 		return ;
@@ -119,18 +124,19 @@ void PhoneBook::search()
 	std::cin >> index;
 	while (check_index(index))
 	{
-		std::cout << "Sorry, wrong index, try again :\n";
-		std::cin >> index;
+		if (std::cin.eof())
+			return ;
+		else
+		{
+			std::cout << "Sorry, wrong index, try again :\n";
+			std::cin >> index;
+		}
 	}
 	this->rep[index[0] - 49].print_contact();
 }
 
 void PhoneBook::exit()
 {
-	for (size_t i = 0; i < 8; i++)
-	{
-		rep[i].~Contact();
-	}
 	this->~PhoneBook();
 	::exit(EXIT_SUCCESS);
 }
