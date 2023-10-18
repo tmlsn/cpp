@@ -10,7 +10,7 @@ int main(void)
 	david.attack();
 
 	HumanB daoud("Daoud");
-	// daoud.attack();
+	daoud.attack();
 
 	Weapon weapon2 = Weapon("small rocks");
 	daoud.setWeapon(weapon2);

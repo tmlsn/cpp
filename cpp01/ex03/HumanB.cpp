@@ -6,15 +6,18 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:19:35 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/18 01:09:52 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/10/18 01:39:17 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : name(name) {}
+HumanB::HumanB(std::string name) : name(name) 
+{
+	this->weapon = NULL;
+}
 
-void HumanB::setWeapon(Weapon& weapon)
+void HumanB::setWeapon(Weapon weapon)
 {
 	this->weapon = &weapon;
 }

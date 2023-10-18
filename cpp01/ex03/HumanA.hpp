@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 23:25:43 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/18 00:48:09 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/10/18 01:25:34 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class HumanA
 {
 	private:
 		std::string name;
-		Weapon* weapon;
+		Weapon& weapon;
 		HumanA();
 
 	public:

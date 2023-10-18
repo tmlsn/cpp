@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:15:11 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/18 00:39:33 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/10/18 01:39:46 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class HumanB
 	public:
 		HumanB(std::string name);
 		void attack(void);
-		void setWeapon(Weapon& weapon);
+		void setWeapon(Weapon weapon);
 		~HumanB();
 };
 
