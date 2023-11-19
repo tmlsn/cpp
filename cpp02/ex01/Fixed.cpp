@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:34:39 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/19 19:08:35 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:12:57 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ Fixed::~Fixed()
 {
 	std::cout << "Copy constructor called.";
 } */
+
+Fixed::Fixed(const int val) 
+{
+	std::cout << "Default constructor called." << std::endl;
+	this->_value = 0;
+}
 
 Fixed::Fixed(const Fixed &obj)
 {
