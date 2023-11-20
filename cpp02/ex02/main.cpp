@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:54:14 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/20 10:14:39 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:08:44 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 int main( void ) {
 
 Fixed a;
-Fixed const b( 10 );
-Fixed const c( 42.42f );
-Fixed const d( b );
 
-a = Fixed( 1234.4321f );
+Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-std::cout << "a is " << a << std::endl;
-std::cout << "b is " << b << std::endl;
-std::cout << "c is " << c << std::endl;
-std::cout << "d is " << d << std::endl;
+//Fixed c(b * a);
 
-std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+std::cout << a << std::endl;
+std::cout << ++a << std::endl;
+std::cout << a << std::endl;
+std::cout << a++ << std::endl;
+std::cout << a << std::endl;
+std::cout << b << std::endl;
+
+std::cout << Fixed(Fixed(a * b) / b) * Fixed(Fixed(b) / a - Fixed(b)) << std::endl;
+std::cout << a << std::endl;
+std::cout << b<<std::endl;
+std::cout << Fixed::max( a, b ) << std::endl;
 
 return 0;
 }

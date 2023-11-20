@@ -6,13 +6,13 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:38:00 by tmalless          #+#    #+#              #
-#    Updated: 2023/10/17 17:26:45 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/19 18:56:35 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook
+NAME	= rawbit
 
-SRC		= main.cpp Contact.cpp PhoneBook.cpp
+SRC		= main.cpp Fixed.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++

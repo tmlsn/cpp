@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:34:39 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/19 19:12:57 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:21:52 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,14 @@ Fixed::~Fixed()
 
 Fixed::Fixed(const int val) 
 {
-	std::cout << "Default constructor called." << std::endl;
-	this->_value = 0;
+	std::cout << "Int constructor called." << std::endl;
+	this->_value = val << this->bits;
+}
+
+Fixed::Fixed(const float val) 
+{
+	std::cout << "Float constructor called." << std::endl;
+	this->_value = roundf(val * (1 << this->bits));
 }
 
 Fixed::Fixed(const Fixed &obj)
@@ -58,4 +64,20 @@ int	Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called." << std::endl;
 	return (this->_value);
+}
+
+int		Fixed::toInt( void ) const
+{
+	return (this->_value >> this->bits);
+}
+
+float	Fixed::toFLoat( void ) const
+{
+	return ((float)this->_value / (float)(1 << this->bits));
+}
+
+std::ostream	&operator<< (std::ostream &ost, const Fixed &num)
+{
+	ost << num.toFLoat();
+	return (ost);
 }
