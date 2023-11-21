@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:51:25 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:10 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:58:53 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,19 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	std::string line;
+	std::string	file;
 	std::string to_r = av[2];
 	std::string r_with = av[3];
 	while (getline(ifs, line))
 	{
-		ft_replace(&line, to_r, r_with);
-		if (!std::cin.eof())
-			ofs << line << std::endl;
+		/* if (!std::cin.eof())
+		{ */
+			file.append(line);
+			file.append("\n");
+		/* } */
 	}
+	ft_replace(&file, to_r, r_with);
+	ofs << file;
 	ofs.close();
 	ifs.close();
 	return (0);
