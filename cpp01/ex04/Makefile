@@ -6,13 +6,13 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:38:00 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/17 16:04:01 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/17 11:41:32 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= bagar
+NAME	= replacer
 
-SRC		= HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
+SRC		= main.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++

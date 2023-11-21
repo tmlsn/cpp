@@ -5,25 +5,25 @@
 
 int main(void)
 {
-	Weapon weapon1 = Weapon("colonialism");
-	HumanA david("David", weapon1);
-	david.attack();
+	Weapon weapon1 = Weapon("glock");
+	HumanA Tim("Tim", weapon1);
+	Tim.attack();
 
-	HumanB daoud("Daoud");
-	daoud.attack();
+	HumanB Tom("Tom");
+	Tom.attack();
 
 	Weapon weapon2 = Weapon("small rocks");
-	daoud.setWeapon(weapon2);
-	daoud.attack();
+	Tom.setWeapon(weapon2);
+	Tom.attack();
 
 	weapon1.setType("big rockets");
-	david.attack();
+	Tim.attack();
 
-	weapon2.setType("Hamas");
-	daoud.attack();
+	weapon2.setType("M16");
+	Tom.attack();
 
-	weapon1.setType("\"Oh my god this is terorism !!!\"");
-	david.attack();
+	weapon1.setType("knife");
+	Tim.attack();
 
 	return (0);
 }
