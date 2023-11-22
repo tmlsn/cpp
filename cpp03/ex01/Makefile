@@ -6,13 +6,13 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:38:00 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/21 14:35:49 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/22 13:10:06 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ClapTrap
+NAME	= ScavTrap
 
-SRC		= main.cpp ClapTrap.cpp
+SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++

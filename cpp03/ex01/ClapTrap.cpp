@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:30:58 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/21 14:43:56 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:09:47 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "Default constructor called." << std::endl;
+	std::cout << "ClapTrap - Default constructor called." << std::endl;
 };
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "String constructor called." << std::endl;
+	std::cout << "ClapTrap - String constructor called." << std::endl;
 };
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Default destructor called." << std::endl;
+	std::cout << "ClapTrap - Default destructor called." << std::endl;
 };
 
 ClapTrap::ClapTrap(const ClapTrap &cpy) /* : _name(cpy._name) */
 {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << "ClapTrap - Copy constructor called." << std::endl;
 	*this = cpy;
 };
 
 ClapTrap & ClapTrap::operator=(const ClapTrap &obj)
 {
-	std::cout << "Copy assignement operator called." << std::endl;
+	std::cout << "ClapTrap - Copy assignement operator called." << std::endl;
 	if (this != &obj)
 	{
 		this->_name = obj._name;

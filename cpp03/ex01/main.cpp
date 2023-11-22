@@ -1,15 +1,21 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main( void )
 {
-	ClapTrap toto;
-	ClapTrap jojo;
-	ClapTrap clap = ClapTrap("Clap");
-	ClapTrap bae = ClapTrap("Bae");
-	toto = bae;
-	jojo = ClapTrap(clap);
-	clap.beRepaired(5);
-	clap.takeDamage(2147483659);
-	clap.takeDamage(5);
-	clap.beRepaired(5);	
+	{
+		ClapTrap cl = ClapTrap("Bae");
+		cl.beRepaired(5);
+		cl.takeDamage(5);
+		cl.beRepaired(5);
+		cl.takeDamage(15);
+		cl.beRepaired(10);
+	}
+	std::cout << std::endl;
+	{
+		ScavTrap sl = ScavTrap("Quoicoubae");
+		sl.beRepaired(5);
+		sl.guardGate();
+		sl.takeDamage(50);
+	}
 }
