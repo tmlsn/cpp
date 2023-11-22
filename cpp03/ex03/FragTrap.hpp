@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 16:53:40 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/17 21:36:18 by tmalless         ###   ########.fr       */
+/*   Created: 2023/11/22 13:13:39 by tmalless          #+#    #+#             */
+/*   Updated: 2023/11/22 15:10:56 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef FRAGTRAP_HPP
 
-int main(void)
+# define FRAGTRAP_HPP
+
+# include <iostream>
+# include "ClapTrap.hpp"
+
+class FragTrap : virtual public ClapTrap
 {
-	Zombie *horde = zombieHorde(5, "Bob");
+	private:
 
-	for (int i = 0; i < 5; i++)
-	{
-		horde[i].announce();
-	}
+	protected:
+		FragTrap();
 
-	delete [] horde;
-	
-	return (1);
-}
+	public:
+		FragTrap(std::string name);
+		~FragTrap();
+
+		void attack(const std::string &target);
+		void highFivesGuys(void);
+};
+
+#endif
+

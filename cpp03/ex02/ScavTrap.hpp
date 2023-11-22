@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 00:19:35 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/18 01:39:17 by tmalless         ###   ########.fr       */
+/*   Created: 2023/11/22 12:48:42 by tmalless          #+#    #+#             */
+/*   Updated: 2023/11/22 13:03:47 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef SCAVTRAP_H
 
-HumanB::HumanB(std::string name) : name(name) 
+# define SCAVTRAP_H
+
+# include <iostream>
+# include "ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap
 {
-	this->weapon = NULL;
-}
+private:
+	ScavTrap();
+public:
+	ScavTrap(const std::string);
+	~ScavTrap();
+	
+	void guardGate();
+};
 
-void HumanB::setWeapon(Weapon weapon)
-{
-	this->weapon = &weapon;
-}
-
-void HumanB::attack(void)
-{
-	if (!this->weapon)
-		std::cout << this->name << " attack with his bare hands" << std::endl;
-	else
-		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
-}
-
-HumanB::~HumanB() {}
+#endif

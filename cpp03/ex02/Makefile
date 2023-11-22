@@ -6,13 +6,13 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:38:00 by tmalless          #+#    #+#              #
-#    Updated: 2023/10/17 17:27:42 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/22 13:34:12 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= zombie
+NAME	= FragTrap
 
-SRC		= Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
+SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++

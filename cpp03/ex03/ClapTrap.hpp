@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 13:15:12 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/19 18:52:42 by tmalless         ###   ########.fr       */
+/*   Created: 2023/11/21 13:12:24 by tmalless          #+#    #+#             */
+/*   Updated: 2023/11/22 15:07:54 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
+#ifndef CLAPTRAP_H
 
-# define FIXED_HPP
+# define CLAPTRAP_H
 
 # include <iostream>
 
-class Fixed
+class ClapTrap
 {
 	private:
-		int	_value;
-		static const int bits = 8;
-	
+
+	protected:
+		std::string	_name;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
+
 	public:
-		Fixed();
-		Fixed(const Fixed &obj);
-		Fixed &operator= (const Fixed &obj);
-		~Fixed();
-		
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+		ClapTrap();
+		~ClapTrap();
+
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &cpy);
+		ClapTrap &operator=(const ClapTrap &obj);
+
+		void attack(const std::string& target);
+		virtual void takeDamage(unsigned int amount);
+		virtual void beRepaired(unsigned int amount);
+
 };
 
 #endif

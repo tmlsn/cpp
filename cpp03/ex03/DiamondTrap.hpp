@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 00:15:11 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/18 01:39:46 by tmalless         ###   ########.fr       */
+/*   Created: 2023/11/22 13:37:46 by tmalless          #+#    #+#             */
+/*   Updated: 2023/11/22 15:19:55 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#ifndef DIAMONDTRAP_HPP
 
-# include "Weapon.hpp"
-# include <iostream>
+# define DIAMONDTRAP_HPP
 
+# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-
-class HumanB
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
-		std::string name;
-		Weapon* weapon;
-		//HumanA();
-
+		std::string _name;
+		DiamondTrap();
+		
 	public:
-		HumanB(std::string name);
-		void attack(void);
-		void setWeapon(Weapon weapon);
-		~HumanB();
-};
+		using FragTrap::_hitPoints;
+		using FragTrap::_attackDamage;
+		using ScavTrap::_energyPoints;
+		using ScavTrap::attack;
+
+		DiamondTrap(std::string name);
+		~DiamondTrap();
+
+		void whoAmI();
+	};
 
 #endif
