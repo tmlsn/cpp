@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:37:29 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/22 15:21:33 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:21:54 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 };
 
 DiamondTrap::~DiamondTrap(){std::cout << "DiamondTrap - Default destructor called." << std::endl;};
+
+DiamondTrap::DiamondTrap(const DiamondTrap &cpy) : ClapTrap(cpy._name + "_clap_name"), ScavTrap(cpy._name + "_scav_name"), FragTrap(cpy._name + "_frag_name")
+{
+	std::cout << "DiamondTrap - Copy constructor called." << std::endl;
+	*this = cpy;
+};
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj)
+{
+	std::cout << "DiamondTrap - Copy assignement operator called." << std::endl;
+	if (this != &obj)
+	{
+		this->_name = obj._name;
+		this->_hitPoints = obj._hitPoints;
+		this->_energyPoints = obj._energyPoints;
+		this->_attackDamage = obj._attackDamage;
+	}
+	return (*this);
+};
 
 void DiamondTrap::whoAmI()
 {

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:48:42 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/22 15:11:10 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:06:19 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ class ScavTrap : virtual public ClapTrap
 		
 		void attack(const std::string &target);
 		void guardGate();
+
+		ScavTrap(const ScavTrap &cpy);
+		ScavTrap &operator=(const ScavTrap &obj);
 };
 
 #endif

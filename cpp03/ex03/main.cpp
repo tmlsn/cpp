@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:31:00 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/22 15:02:03 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:28:45 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,16 @@ int	main(void)
 	std::string s4 = "Diego";
 
 	// Constructors
+	DiamondTrap diamondTrap(s3);
 	DiamondTrap	diamondtrap(s4);
+	DiamondTrap	ddiamondtrap(diamondTrap);
 	std::cout << std::endl;
-
+	std::cout << std::endl;
+	ddiamondtrap.whoAmI();
+	std::cout << std::endl;
+	std::cout << std::endl;
+	diamondtrap = diamondTrap;
+	std::cout << std::endl;
 	// Repairs
 	diamondtrap.takeDamage(14);
 	diamondtrap.beRepaired(18);

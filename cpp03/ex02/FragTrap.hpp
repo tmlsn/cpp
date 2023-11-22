@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:13:39 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/22 13:33:20 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:04:46 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ private:
 public:
 	FragTrap(std::string name);
 	~FragTrap();
+
+	FragTrap(const FragTrap &cpy);
+	FragTrap &operator=(const FragTrap &obj);
 
 	void highFivesGuys(void);
 };

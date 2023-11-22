@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:13:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/22 14:23:20 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:20:39 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,25 @@ FragTrap::FragTrap(std::string name) : ClapTrap()
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap - Default destructor called." << std::endl;
+};
+
+FragTrap::FragTrap(const FragTrap &cpy) : ClapTrap(cpy._name)
+{
+	std::cout << "FragTrap - Copy constructor called." << std::endl;
+	*this = cpy;
+};
+
+FragTrap &FragTrap::operator=(const FragTrap &obj)
+{
+	std::cout << "FragTrap - Copy assignement operator called." << std::endl;
+	if (this != &obj)
+	{
+		this->_name = obj._name;
+		this->_hitPoints = obj._hitPoints;
+		this->_energyPoints = obj._energyPoints;
+		this->_attackDamage = obj._attackDamage;
+	}
+	return (*this);
 };
 
 void FragTrap::attack(const std::string& target)

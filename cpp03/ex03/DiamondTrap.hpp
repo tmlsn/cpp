@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:37:46 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/22 15:19:55 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:05:35 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ class DiamondTrap : public ScavTrap, public FragTrap
 
 		DiamondTrap(std::string name);
 		~DiamondTrap();
+
+		DiamondTrap(const DiamondTrap &cpy);
+		DiamondTrap &operator=(const DiamondTrap &obj);
 
 		void whoAmI();
 	};
