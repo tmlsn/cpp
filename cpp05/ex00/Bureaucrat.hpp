@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:01:31 by tmalless          #+#    #+#             */
-/*   Updated: 2024/02/13 20:12:44 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:06:32 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ public:
 
 	~Bureaucrat();
 
-	const std::string getName();
-	int getGrade();
+	const std::string getName() const;
+	int getGrade() const;
+
+	void	incrementGrade();
+	void	decrementGrade();
 
 	class GradeTooHighException : public std::exception
 	{
@@ -53,5 +56,6 @@ public:
 	};
 };
 
+std::ostream &operator<<(std::ostream &os, Bureaucrat *bur);
 
 #endif

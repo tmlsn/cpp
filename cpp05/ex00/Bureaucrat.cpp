@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:12:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/02/13 20:12:31 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:12:48 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ Bureaucrat::Bureaucrat(int grade) : _name("John Doe")
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		this->setGrade(MIN_GRADE);
-		std::cout << e.what() << ", grade set to default (150).";
+		std::cout << e.what() << " Grade set to default (150)." << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e)
+	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		this->setGrade(MIN_GRADE);
-		std::cout << e.what() << ", grade set to default (150).";
+		std::cout << e.what() << " Grade set to default (150)." << std::endl;
 	}
 };
 
@@ -40,21 +40,58 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 	{
 		this->setGrade(grade);
 	}
-	catch (Bureaucrat::GradeTooHighException &e)
+	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		this->setGrade(MIN_GRADE);
-		std::cout << e.what() << ", grade set to default (150).";
+		std::cout << e.what() << " Grade set to default (150)." << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		this->setGrade(MIN_GRADE);
-		std::cout << e.what() << ", grade set to default (150).";
+		std::cout << e.what() << " Grade set to default (150)." << std::endl;
 	}
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &cpy) : _name(cpy.getName())
+{
+	*this = cpy;
+};
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
+{
+	if (this != &obj)
+	{
+		//this->_name = obj._name;
+		this->_grade = obj.getGrade();
+	}
+	return (*this);
+};
+
 Bureaucrat::~Bureaucrat() {};
 
+void Bureaucrat::decrementGrade()
+{
+	try
+	{
+		this->setGrade(this->getGrade() + 1);
+	}
+	catch ( Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << this->getName() << " has already the lowest grade." << std::endl;
+	}
+}
 
+void Bureaucrat::incrementGrade()
+{
+	try
+	{
+		this->setGrade(this->getGrade() - 1);
+	}
+	catch ( Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << this->getName() << " has already the highest grade." << std::endl;
+	}
+}
 
 void Bureaucrat::setGrade(int grade)
 {
@@ -66,12 +103,28 @@ void Bureaucrat::setGrade(int grade)
 		this->_grade = grade;
 }
 
-const std::string Bureaucrat::getName()
+const std::string Bureaucrat::getName() const
 {
 	return (this->_name);
 };
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
 	return (this->_grade);
 };
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high.");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low.");
+}
+
+std::ostream &operator<<(std::ostream &os, Bureaucrat *bur)
+{
+	os << bur->getName() << ", bureaucrat grade " << bur->getGrade() << "." << std::endl;
+	return (os);
+}
