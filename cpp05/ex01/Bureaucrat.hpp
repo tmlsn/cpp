@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:01:31 by tmalless          #+#    #+#             */
-/*   Updated: 2024/02/14 18:06:32 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:18:18 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 # define BUREAUCRAT_HPP
 # include <iostream>
+# include "Form.hpp"
 
-# define MAX_GRADE 0
+# define MAX_GRADE 1
 # define MIN_GRADE 150
+
+class Form;
 
 class Bureaucrat
 {
@@ -41,6 +44,8 @@ public:
 
 	void	incrementGrade();
 	void	decrementGrade();
+
+	void	signForm(Form &form);
 
 	class GradeTooHighException : public std::exception
 	{
