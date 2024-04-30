@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:33:51 by tmalless          #+#    #+#             */
-/*   Updated: 2024/03/28 17:50:12 by tmalless         ###   ########.fr       */
+/*   Created: 2024/04/26 18:28:00 by tmalless          #+#    #+#             */
+/*   Updated: 2024/04/30 18:50:20 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
+# pragma once
 
-# define CURE_HPP
+# include "AForm.hpp"
 
-# include "Includes.hpp"
-
-class Cure : public AMateria
+class ShrubberyCreationForm : public AForm
 {
-	private:
+private:
+	ShrubberyCreationForm();
+	std::string _target;
+	
+public:
+	ShrubberyCreationForm(std::string target);
+	ShrubberyCreationForm(const ShrubberyCreationForm &cpy);
+	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &obj);
+	~ShrubberyCreationForm();
 
-	public:
-		Cure();
-		~Cure();
-		Cure(const Cure &cpy);
-		Cure &operator=(const Cure &obj);
-
-		void use(const ICharacter &target) const;
-		Cure *clone(void) const;
+	void execute(Bureaucrat const &executor) const;
 };
 
-#endif
+
+

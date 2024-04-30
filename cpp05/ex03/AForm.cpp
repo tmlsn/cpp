@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:13:36 by tmalless          #+#    #+#             */
-/*   Updated: 2024/04/26 20:19:07 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:00:05 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,6 @@ int AForm::getGrade(std::string type) const
 		std::cout << type << " is invalid. Please enter a valid entry, SIGN or EXEC :" << std::endl;
 		std::cin >> type;
 		return (this->getGrade(type));
-
 	}
 }
 
@@ -205,7 +204,9 @@ bool AForm::getStatus() const
 void	AForm::beSigned(Bureaucrat &bur)
 {
 	if (this->getSGrade() >= (int)bur.getGrade())
-		std::cout << bur.getName() << " signed " << this->getName() << "." << std::endl;
+	{
+		_isSigned = true;
+	}
 	else
 		throw Bureaucrat::GradeTooLowException();
 }
@@ -220,6 +221,16 @@ const char *AForm::GradeTooHighException::what() const throw()
 	return ("Grade too high.");
 };
 
+const char *AForm::FormNotSignException::what() const throw()
+{
+	return ("The form isn't sign.");
+};
+
+const char *AForm::FileNotCreateException::what() const throw()
+{
+	return ("The file hasn't been created.");
+};
+
 std::ostream &operator<<(std::ostream &os, AForm *form)
 {
 	if (form->getStatus() == true)
@@ -228,7 +239,7 @@ std::ostream &operator<<(std::ostream &os, AForm *form)
 		<< " or less to be executed." << std::endl;
 	else
 		os << form->getName() << " hasn't been signed yet. It need a grade "\
-		<< form->getSGrade() << " or less and it need a grade "\
+		<< form->getSGrade() << " or less to be signed and it need a grade "\
 		<< form->getXGrade() << " or less to be executed." << std::endl;
   return (os);
 }

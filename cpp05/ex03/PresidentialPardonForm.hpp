@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 18:28:00 by tmalless          #+#    #+#             */
-/*   Updated: 2024/04/26 19:00:19 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:46:10 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PRESIDENTIALPARDONFORM_HPP
+
+# define PRESIDENTIALPARDONFORM_HPP
+
 # include "AForm.hpp"
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
-	RobotomyRequestForm();
+	PresidentialPardonForm();
 	std::string _target;
 	
 public:
-	RobotomyRequestForm(std::string target);
-	~RobotomyRequestForm();
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(const PresidentialPardonForm &cpy);
+	PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
+	~PresidentialPardonForm();
+
+	void execute(Bureaucrat const &executor) const;
 };
+
+#endif
