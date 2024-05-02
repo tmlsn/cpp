@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:33:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/02 16:34:55 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:52:02 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int main(int ac, char **av)
 {
-	for (int i = 0; i < ac; i++)
+	for (int i = 1; i < ac; i++)
 	{
 		ScalarConverter::convert(av[i]);
+		std::cout << std::endl;
 	}
 	return (0);
 }
