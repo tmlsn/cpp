@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:41:55 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/02 21:36:43 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/02 21:50:35 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void ScalarConverter::convert(std::string toConvert)
 	{
 		if (toConvert == special[i])
 		{
-			std::cout <<"ZBOUB"<<std::endl;
 			toChar = "impossible";
 			toFloat = atof(toConvert.c_str());
 			toDouble = static_cast<double>(toFloat);
@@ -33,8 +32,10 @@ void ScalarConverter::convert(std::string toConvert)
 	if ((toConvert.find_first_not_of("0123456789-.f") != std::string::npos
 		|| toConvert.find_first_of("f") != toConvert.find_last_of("f")
 		|| toConvert.find_first_of(".") != toConvert.find_last_of("."))
-		&& toChar != "impossible") 
+		&& toChar != "impossible"
+		&& toConvert.size() != 1) 
 	{	
+		std::cout << "Not handled" << std::endl;
 		std::cout << "Char : impossible" << std::endl;
 		std::cout << "Int : impossible" << std::endl;
 		std::cout << "Float : impossible" << std::endl;
@@ -48,10 +49,10 @@ void ScalarConverter::convert(std::string toConvert)
 			toChar = "'";
 			toChar += toConvert[0];
 			toChar += "'";
-			std::cout << "Char" << std::endl;
 			toInt = static_cast<int>(toConvert[0]);
 			toFloat = static_cast<float>(toConvert[0]);
 			toDouble = static_cast<double>(toConvert[0]);
+			std::cout << "Char" << std::endl;
 		}
 		else
 		{
@@ -59,21 +60,19 @@ void ScalarConverter::convert(std::string toConvert)
 			toChar = "Non displayable";
 			toFloat = static_cast<float>(toInt);
 			toDouble = static_cast<double>(toInt);
+			std::cout << "Int " << std::endl;
 		}
 	}
 	else if (toChar != "impossible"
-		&& (toConvert.find_first_not_of("0123456789") != std::string::npos 
-		&& (toConvert[toConvert.find_last_not_of("0123456789")] == '.'
-		|| toConvert[toConvert.find_last_not_of("0123456789")] == 'f')))
+		&& toConvert.find_first_not_of("0123456789") != std::string::npos )
 	{
 		if (toConvert[toConvert.find_last_not_of("0123456789")] == 'f')
 		{
 			toFloat = atof(toConvert.c_str());
 			toDouble = static_cast<double>(toFloat);
-			std::cout << "Double " << toConvert << std::endl;
+			std::cout << "Float " << toConvert << std::endl;
 		}
-		else if (/* toConvert.find_first_not_of("0123456789") == toConvert.find_last_not_of("0123456789")
-			&&  */toConvert[toConvert.find_last_not_of("0123456789")] == '.')
+		else if (toConvert[toConvert.find_last_not_of("0123456789")] == '.')
 		{
 			toDouble = atof(toConvert.c_str());
 			toFloat = static_cast<float>(toDouble);
@@ -90,6 +89,12 @@ void ScalarConverter::convert(std::string toConvert)
 	}
 	if ((toInt < 27 || toInt > 132) && toChar != "impossible")
 		toChar = "Non displayable";
+	else if (toChar != "impossible")
+	{
+		toChar = "'";	
+		toChar += static_cast<char>(toInt);
+		toChar += "'";	
+	}
 	std::cout << "Char : " << toChar << std::endl;
 	if (toChar == "impossible")
 		std::cout << "Int : impossible" << std::endl;
