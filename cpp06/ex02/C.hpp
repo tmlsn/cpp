@@ -6,11 +6,13 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:56:15 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/03 11:56:35 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:52:56 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+#ifndef C_HPP
+
+# define C_HPP
 
 # include "Base.hpp"
 
@@ -19,3 +21,5 @@ class C : public Base
 public:
 	~C();
 };
+
+#endif

@@ -6,22 +6,24 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:47:14 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/03 12:10:14 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:52:30 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef BASE_HPP
+
+# define BASE_HPP
 
 # include <iostream>
-# include "A.hpp"
-# include "B.hpp"
-# include "C.hpp"
+# include <stdlib.h>
 
 class Base
 {
-public:
-	virtual ~Base() = 0;
+	public:
+		virtual ~Base();
 };
+
+#endif
 
 Base * generate(void);
 

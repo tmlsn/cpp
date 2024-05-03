@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:41:55 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/03 16:08:32 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/03 17:19:16 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void ScalarConverter::convert(std::string toConvert)
 		}
 	}
 	if ((toConvert.find_first_not_of("0123456789-.f") != std::string::npos
-		|| toConvert.find_first_of("f") != toConvert.find_last_of("f")
+		|| (toConvert.find_first_of("f") != toConvert.size() - 1
+		&& toConvert.find_first_of("f") != std::string::npos)
 		|| toConvert.find_first_of(".") != toConvert.find_last_of("."))
 		&& toChar != "impossible"
 		&& toConvert.size() != 1) 
