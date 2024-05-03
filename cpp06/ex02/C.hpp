@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:33:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/03 16:08:41 by tmalless         ###   ########.fr       */
+/*   Created: 2024/05/03 11:56:15 by tmalless          #+#    #+#             */
+/*   Updated: 2024/05/03 11:56:35 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+# pragma once
 
-int main(int ac, char **av)
+# include "Base.hpp"
+
+class C : public Base
 {
-	for (int i = 1; i < ac; i++)
-	{
-		ScalarConverter::convert(av[i]);
-		std::cout << std::endl;
-	}
-	return (0);
-}
+public:
+	~C();
+};

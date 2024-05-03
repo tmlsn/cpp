@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:41:55 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/02 18:48:21 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:08:32 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,75 +14,100 @@
 
 void ScalarConverter::convert(std::string toConvert)
 {
-	int		toInt;
-	//double	toDouble;
-	float	toFloat;
+	std::string	toChar = "";
+	int			toInt = 0;
+	float		toFloat = 0;
+	double		toDouble = 0;
 	
-	std::string special[5] = {"-inff", "+inff", "-inf", "+inf", "nan"};
+	std::string special[6] = {"-inff", "+inff", "-inf", "+inf", "nan", "nanf"};
+	for (size_t i = 0; i <= special->size(); i++)
+	{
+		if (toConvert == special[i])
+		{
+			toChar = "impossible";
+			toFloat = atof(toConvert.c_str());
+			toDouble = static_cast<double>(toFloat);
+		}
+	}
+	if ((toConvert.find_first_not_of("0123456789-.f") != std::string::npos
+		|| toConvert.find_first_of("f") != toConvert.find_last_of("f")
+		|| toConvert.find_first_of(".") != toConvert.find_last_of("."))
+		&& toChar != "impossible"
+		&& toConvert.size() != 1) 
+	{	
+		std::cout << "Not handled" << std::endl;
+		std::cout << "Char : impossible" << std::endl;
+		std::cout << "Int : impossible" << std::endl;
+		std::cout << "Float : impossible" << std::endl;
+		std::cout << "Double : impossible" << std::endl;
+		return ;
+	}
 	if (toConvert.size() == 1)
 	{
 		if (toConvert.find_first_not_of("0123456789") != std::string::npos)
 		{
-			std::cout << "Char : '" << toConvert << "'" << std::endl;
-			std::cout << "Int : " << static_cast<int>(toConvert[0]) << std::endl;
-			std::cout << "Float : " << static_cast<float>(toConvert[0]) << std::endl;
-			std::cout << "Double : " << static_cast<double>(toConvert[0]) << std::endl;
-			return ;
+			toChar = "'";
+			toChar += toConvert[0];
+			toChar += "'";
+			toInt = static_cast<int>(toConvert[0]);
+			toFloat = static_cast<float>(toConvert[0]);
+			toDouble = static_cast<double>(toConvert[0]);
+			std::cout << "Char" << std::endl;
 		}
 		else
 		{
 			toInt = static_cast<int>(toConvert[0]) - 48;
-			std::cout << "Char : '" << static_cast<char>(toInt) << "'" << std::endl;
-			std::cout << "Int : " << toInt << std::endl;
-			std::cout << "Float : " << static_cast<float>(toInt) << std::endl;
-			std::cout << "Double : " << static_cast<double>(toInt) << std::endl;
-			return ;
+			toChar = "Non displayable";
+			toFloat = static_cast<float>(toInt);
+			toDouble = static_cast<double>(toInt);
+			std::cout << "Int " << std::endl;
 		}
 	}
-	if (toConvert.find_first_not_of("0123456789") != std::string::npos)
+	else if (toChar != "impossible"
+		&& toConvert.find_first_not_of("0123456789") != std::string::npos )
 	{
-		if (toConvert.find_first_not_of("0123456789") == 0)
-		{
-			for (size_t i = 0; i < special->size(); i++)
-			{
-				if (toConvert == special[i])
-				{
-					std::cout << "special "<< special[i] << std::endl;
-					return ;
-				}
-			}
-		}
-		if ((toConvert.find_first_not_of("0123456789") == toConvert.length() - 1 
-			&& toConvert[toConvert.find_first_not_of("0123456789")] == 'f')
-			|| (toConvert[toConvert.find_first_not_of("0123456789")] == '.'
-				&& toConvert[toConvert.find_last_not_of("0123456789")] == 'f'))
+		if (toConvert[toConvert.find_last_not_of("0123456789")] == 'f')
 		{
 			toFloat = atof(toConvert.c_str());
-			std::cout << "Char : '" << static_cast<char>(toFloat) << "'" << std::endl;
-			std::cout << "Int : " << static_cast<int>(toFloat) << std::endl;
-			std::cout << "Float : " << toFloat << std::endl;
-			std::cout << "Double : " << static_cast<double>(toFloat) << std::endl;
-			return ;
+			toDouble = static_cast<double>(toFloat);
+			std::cout << "Float " << toConvert << std::endl;
 		}
-		if (toConvert.find_first_not_of("0123456789") == toConvert.find_last_not_of("0123456789")
-			&& toConvert[toConvert.find_first_not_of("0123456789")] == '.')
+		else if (toConvert[toConvert.find_last_not_of("0123456789")] == '.')
 		{
+			toDouble = atof(toConvert.c_str());
+			toFloat = static_cast<float>(toDouble);
 			std::cout << "Double " << toConvert << std::endl;
-			return ;
 		}
+		toInt = static_cast<int>(toDouble);
+	}
+	else if (toChar != "impossible")
+	{
+		toInt = atoi(toConvert.c_str());
+		toFloat = static_cast<float>(toInt);
+		toDouble = static_cast<double>(toInt);
+		std::cout << "Int " << std::endl;
+	}
+	if ((toInt < 27 || toInt > 132) && toChar != "impossible")
+		toChar = "Non displayable";
+	else if (toChar != "impossible")
+	{
+		toChar = "'";	
+		toChar += static_cast<char>(toInt);
+		toChar += "'";	
+	}
+	std::cout << "Char : " << toChar << std::endl;
+	if (toChar == "impossible")
+		std::cout << "Int : impossible" << std::endl;
+	else
+		std::cout << "Int : " << toInt << std::endl;
+	if (toFloat - static_cast<int>(toFloat) == 0)
+	{
+		std::cout << "Float : " << toFloat << ".0f" << std::endl;
+		std::cout << "Double : " << toDouble << ".0" << std::endl;
 	}
 	else
 	{
-		toInt = atoi(toConvert.c_str());
-		if (toInt > 31 && toInt < 127)
-			std::cout << "Char : '" << static_cast<char>(toInt) << "'" << std::endl;
-		else	
-			std::cout << "Char : Impossible" << std::endl;
-		std::cout << "Int : " << toInt << std::endl;
-		std::cout << "Float : " << static_cast<float>(toInt) << std::endl;
-		std::cout << "Double : " << static_cast<double>(toInt) << std::endl;
-		return ;
+		std::cout << "Float : " << toFloat << "f" << std::endl;
+		std::cout << "Double : " << toDouble << std::endl;		
 	}
-	std::cout << "Impossible " << toConvert << std::endl;
-	return ;
 }

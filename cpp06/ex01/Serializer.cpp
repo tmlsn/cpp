@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:33:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/03 16:08:41 by tmalless         ###   ########.fr       */
+/*   Created: 2024/05/03 00:15:41 by tmalless          #+#    #+#             */
+/*   Updated: 2024/05/03 00:36:47 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+# include "Serializer.hpp"
 
-int main(int ac, char **av)
+uintptr_t Serializer::serialize(Data* ptr)
 {
-	for (int i = 1; i < ac; i++)
-	{
-		ScalarConverter::convert(av[i]);
-		std::cout << std::endl;
-	}
-	return (0);
-}
+	return (reinterpret_cast<uintptr_t>(ptr));
+};
+
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data*>(raw));
+};

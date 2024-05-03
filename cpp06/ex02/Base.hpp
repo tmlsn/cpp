@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:33:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/03 16:08:41 by tmalless         ###   ########.fr       */
+/*   Created: 2024/05/03 11:47:14 by tmalless          #+#    #+#             */
+/*   Updated: 2024/05/03 12:10:14 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
 
-int main(int ac, char **av)
+# include <iostream>
+# include "A.hpp"
+# include "B.hpp"
+# include "C.hpp"
+
+class Base
 {
-	for (int i = 1; i < ac; i++)
-	{
-		ScalarConverter::convert(av[i]);
-		std::cout << std::endl;
-	}
-	return (0);
-}
+public:
+	virtual ~Base() = 0;
+};
+
+Base * generate(void);
+
+void identify(Base* p);
+
+void identify(Base& p);
+
+Base* makeA(void);
+
+Base* makeB(void);
+
+Base* makeC(void);

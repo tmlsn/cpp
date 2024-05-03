@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:33:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/03 16:08:41 by tmalless         ###   ########.fr       */
+/*   Created: 2024/05/03 11:59:17 by tmalless          #+#    #+#             */
+/*   Updated: 2024/05/03 12:13:07 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+# include "Base.hpp"
 
-int main(int ac, char **av)
+Base* makeA(void)
 {
-	for (int i = 1; i < ac; i++)
-	{
-		ScalarConverter::convert(av[i]);
-		std::cout << std::endl;
-	}
-	return (0);
+	return (new A);
+}
+
+Base* makeB(void)
+{
+	return (new B);
+}
+
+Base* makeC(void)
+{
+	return (new C);
+}
+
+Base* generate(void)
+{
+	Base* (*func[3])()= {makeA, makeB, makeC};
+	srand(time(NULL));
+	return(func[rand() % 3]());
 }
