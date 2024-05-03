@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:01:31 by tmalless          #+#    #+#             */
-/*   Updated: 2024/04/26 19:41:21 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:51:13 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define MAX_GRADE 1
 # define MIN_GRADE 150
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -56,6 +56,12 @@ public:
 	};
 
 	class GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
+	
+	class AlreadySignFormException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw();

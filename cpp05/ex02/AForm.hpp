@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:13:39 by tmalless          #+#    #+#             */
-/*   Updated: 2024/04/26 20:18:37 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:24:00 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define MIN_GRADE 150
 
 # include <iostream>
+# include <fstream>
+# include <stdlib.h>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -67,6 +69,19 @@ public:
 		virtual const char *what() const throw();
 	};
 
+	class FormNotSignException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
+
+	class FileNotCreateException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
+	
+	virtual void execute(Bureaucrat const &executor) const = 0;
 };
 
 std::ostream &operator<<(std::ostream &os, AForm *form);

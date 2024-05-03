@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:12:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/04/26 19:42:48 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:07:34 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void Bureaucrat::decrementGrade()
 	}
 	catch ( Bureaucrat::GradeTooLowException &e)
 	{
-		std::cout << this->getName() << " has already the lowest grade." << std::endl;
+		std::cerr << e.what() << " " << this->getName() << " has already the lowest grade." << std::endl;
 	}
 }
 
@@ -89,7 +89,7 @@ void Bureaucrat::incrementGrade()
 	}
 	catch ( Bureaucrat::GradeTooHighException &e)
 	{
-		std::cout << this->getName() << " has already the highest grade." << std::endl;
+		std::cerr << e.what() << " " << this->getName() << " has already the highest grade." << std::endl;
 	}
 }
 
@@ -115,15 +115,25 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::signForm(AForm &form)
 {
-	if (form.getStatus() == true)
-		std::cout << this->getName() << " couldn't sign " << form.getName() << " because this form has already been signed." << std::endl;
-	else if (form.getSGrade() < this->getGrade())
-		std::cout << this->getName() << " couldn't sign " << form.getName() << "because this bureaucrat's grade is too low to sign this form." << std::endl;
-	else
+	try
 	{
-		std::cout << this->getName() << " signed " << form.getName() << '.' << std::endl;
-		form.beSigned(*this);	
+		form.beSigned(*this);
+		std::cout << _name << " has signed " << form.getName() << std::endl;
 	}
+	catch(const std::exception& e)
+	{
+		std::cerr << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+	
+	// if (form.getStatus() == true)
+	// 	std::cout << this->getName() << " couldn't sign " << form.getName() << " because this form has already been signed." << std::endl;
+	// else if (form.getSGrade() < this->getGrade())
+	// 	std::cout << this->getName() << " couldn't sign " << form.getName() << "because this bureaucrat's grade is too low to sign this form." << std::endl;
+	// else
+	// {
+	// 	//std::cout << this->getName() << " signed " << form.getName() << '.' << std::endl;
+	// 	form.beSigned(*this);	
+	// }
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
@@ -134,6 +144,24 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low.");
+}
+
+const char *Bureaucrat::AlreadySignFormException::what() const throw()
+{
+	return ("Form already signed.");
+}
+
+void	Bureaucrat::executeForm(AForm &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << "." << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << _name << " couldn't execute " << form.getName() << ", because " << e.what() << std::endl;
+	}
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat *bur)

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:41:55 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/02 17:36:04 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:48:21 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void ScalarConverter::convert(std::string toConvert)
 {
+	int		toInt;
+	//double	toDouble;
+	float	toFloat;
+	
 	std::string special[5] = {"-inff", "+inff", "-inf", "+inf", "nan"};
 	if (toConvert.size() == 1)
 	{
@@ -27,17 +31,17 @@ void ScalarConverter::convert(std::string toConvert)
 		}
 		else
 		{
-			int zboub = static_cast<int>(toConvert[0]) - 48;
-			std::cout << "Char : '" << static_cast<char>(zboub) << "'" << std::endl;
-			std::cout << "Int : " << zboub << std::endl;
-			std::cout << "Float : " << static_cast<float>(zboub) << std::endl;
-			std::cout << "Double : " << static_cast<double>(zboub) << std::endl;
+			toInt = static_cast<int>(toConvert[0]) - 48;
+			std::cout << "Char : '" << static_cast<char>(toInt) << "'" << std::endl;
+			std::cout << "Int : " << toInt << std::endl;
+			std::cout << "Float : " << static_cast<float>(toInt) << std::endl;
+			std::cout << "Double : " << static_cast<double>(toInt) << std::endl;
 			return ;
 		}
 	}
 	if (toConvert.find_first_not_of("0123456789") != std::string::npos)
 	{
-		if (toConvert.find_first_not_of("0123456789") == 1)
+		if (toConvert.find_first_not_of("0123456789") == 0)
 		{
 			for (size_t i = 0; i < special->size(); i++)
 			{
@@ -53,7 +57,11 @@ void ScalarConverter::convert(std::string toConvert)
 			|| (toConvert[toConvert.find_first_not_of("0123456789")] == '.'
 				&& toConvert[toConvert.find_last_not_of("0123456789")] == 'f'))
 		{
-			std::cout << "Float " << toConvert << std::endl;
+			toFloat = atof(toConvert.c_str());
+			std::cout << "Char : '" << static_cast<char>(toFloat) << "'" << std::endl;
+			std::cout << "Int : " << static_cast<int>(toFloat) << std::endl;
+			std::cout << "Float : " << toFloat << std::endl;
+			std::cout << "Double : " << static_cast<double>(toFloat) << std::endl;
 			return ;
 		}
 		if (toConvert.find_first_not_of("0123456789") == toConvert.find_last_not_of("0123456789")
@@ -65,7 +73,14 @@ void ScalarConverter::convert(std::string toConvert)
 	}
 	else
 	{
-		std::cout << "Int " << toConvert << std::endl;
+		toInt = atoi(toConvert.c_str());
+		if (toInt > 31 && toInt < 127)
+			std::cout << "Char : '" << static_cast<char>(toInt) << "'" << std::endl;
+		else	
+			std::cout << "Char : Impossible" << std::endl;
+		std::cout << "Int : " << toInt << std::endl;
+		std::cout << "Float : " << static_cast<float>(toInt) << std::endl;
+		std::cout << "Double : " << static_cast<double>(toInt) << std::endl;
 		return ;
 	}
 	std::cout << "Impossible " << toConvert << std::endl;

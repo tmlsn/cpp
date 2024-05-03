@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 18:28:00 by tmalless          #+#    #+#             */
-/*   Updated: 2024/04/26 18:59:29 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:46:10 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ private:
 	
 public:
 	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(const PresidentialPardonForm &cpy);
+	PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
 	~PresidentialPardonForm();
+
+	void execute(Bureaucrat const &executor) const;
 };
 
 #endif

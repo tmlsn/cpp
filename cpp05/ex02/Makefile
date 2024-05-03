@@ -6,13 +6,13 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:38:00 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/24 11:57:26 by tmalless         ###   ########.fr        #
+#    Updated: 2024/04/30 15:31:03 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Brainless
+NAME	= ceo
 
-SRC		= main.cpp Cat.cpp Animal.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRC		= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
