@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:39:43 by tmalless          #+#    #+#             */
-/*   Updated: 2024/02/15 18:16:30 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:01:17 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,19 @@ int main(void)
 		std::cout << b;
 		std::cout << c;
 
+		std::cout << "\033[34mSigning\033[0m" << std::endl;
 		// Assistant signs the Form
-		try
-		{
+		
 			// c->beSigned(*a);
-			a->signForm(*c);
-		}
-		catch(Bureaucrat::GradeTooLowException &e)
-		{
-			std::cerr << "\033[33m" << a->getName() << " was not able to sign the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
-		}
+		a->signForm(*c);
 
 		// CEO signs the Form
 		std::cout << c;
-		try
-		{
-			c->beSigned(*b);
-			// b->signForm(*c);
-		}
-		catch(Bureaucrat::GradeTooLowException &e)
-		{
-			std::cerr << "\033[33m" << b->getName() << " was not able to sign the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
-		}
-		std::cout << c;
+		
+			/* c->beSigned(*b); */
+		b->signForm(*c);
+		
+		std::cout << c ;
 
 		// try signing the from again
 		b->signForm(*c);

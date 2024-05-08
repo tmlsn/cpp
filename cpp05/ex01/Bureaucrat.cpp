@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:12:20 by tmalless          #+#    #+#             */
-/*   Updated: 2024/02/15 17:43:07 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/07 15:46:11 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,22 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::signForm(Form &form)
 {
-	if (form.getStatus() == true)
+	try
+	{
+		form.beSigned(*this);
+		std::cout << _name << " signed " << form.getName() << "." << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Form not signed : " << e.what() << '\n';
+	}
+	
+	/* if (form.getStatus() == true)
 		std::cout << this->getName() << " couldn't sign " << form.getName() << " because this form has already been signed." << std::endl;
 	else if (form.getSGrade() < this->getGrade())
 		std::cout << this->getName() << " couldn't sign " << form.getName() << "because this bureaucrat's grade is too low to sign this form." << std::endl;
 	else
-		std::cout << this->getName() << " signed " << form.getName() << '.' << std::endl;
+		std::cout << this->getName() << " signed " << form.getName() << '.' << std::endl; */
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()

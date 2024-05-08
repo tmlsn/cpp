@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:18:05 by tmalless          #+#    #+#             */
-/*   Updated: 2024/02/15 18:13:55 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/07 15:45:20 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ bool Form::getStatus() const
 void	Form::beSigned(Bureaucrat &bur)
 {
 	if (this->getSGrade() >= (int)bur.getGrade())
-		std::cout << bur.getName() << " signed " << this->getName() << "." << std::endl;
+		_isSigned = true;
 	else
 		throw Bureaucrat::GradeTooLowException();
 }
