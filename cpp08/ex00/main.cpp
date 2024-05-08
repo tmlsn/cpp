@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 14:32:01 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/08 14:45:42 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/08 16:16:31 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,65 @@
 
 int main(void)
 {
+	std::deque<int> intDeq;
+	std::deque<int>::iterator kt;
+
+	for (int i = 0; i < 101; i++)
+	{
+		intDeq.push_back(i);
+	}
+
+	std::cout << "deque test :"<< std::endl;
+	try
+	{
+		kt = ::easyfind(intDeq, 55);
+		std::cout << "Here is the result : " << *kt << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		kt = ::easyfind(intDeq, 17);
+		std::cout << "Here is the result : " << *kt << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		kt = ::easyfind(intDeq, 43);
+		std::cout << "Here is the result : " << *kt << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		kt = ::easyfind(intDeq, 110);
+		std::cout << "Here is the result : " << *kt << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		kt = ::easyfind(intDeq, -12);
+		std::cout << "Here is the result : " << *kt << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	std::vector<int> intBox;
 	std::vector<int>::iterator it;
+
+	std::cout << "vector test :"<< std::endl;
 
 	for (int i = 0; i < 101; i++)
 	{
@@ -99,7 +156,7 @@ int main(void)
 	}
 		try
 	{
-		jt = ::easyfind(charBox, 6);
+		jt = ::easyfind(charBox, 61);
 		std::cout << "Here is the result : " << *jt << std::endl;
 	}
 	catch(const std::exception& e)
@@ -108,7 +165,7 @@ int main(void)
 	}
 		try
 	{
-		jt = ::easyfind(charBox, 8);
+		jt = ::easyfind(charBox, 62);
 		std::cout << "Here is the result : " << *jt << std::endl;
 	}
 	catch(const std::exception& e)

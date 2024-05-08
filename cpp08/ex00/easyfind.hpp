@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 14:12:43 by tmalless          #+#    #+#             */
-/*   Updated: 2024/05/08 14:32:43 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/05/08 16:09:46 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define EASYFIND_HPP
 
 # include <vector>
+# include <deque>
 # include <iostream>
 # include <algorithm>
 
