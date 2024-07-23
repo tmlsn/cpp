@@ -8,6 +8,13 @@ int main(int ac, char **av)
 		return 1;
 	}
 
+	std::string verif = av[1];
+	if (verif.find_first_of("0123456789+-/*") == std::string::npos)
+	{
+		std::cerr << "Error." << std::endl;
+		return 1;
+	}
+
 	RPN rpn;
 	
 	try

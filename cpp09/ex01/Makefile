@@ -6,7 +6,7 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 18:38:00 by tmalless          #+#    #+#              #
-#    Updated: 2024/07/21 17:13:11 by tmalless         ###   ########.fr        #
+#    Updated: 2024/07/23 21:14:35 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC		= main.cpp RPN.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
 RM		= rm -rf
 
 GREEN	= \033[32m

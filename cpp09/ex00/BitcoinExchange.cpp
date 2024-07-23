@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:48:37 by tmalless          #+#    #+#             */
-/*   Updated: 2024/07/21 15:30:40 by tmalless         ###   ########.fr       */
+/*   Updated: 2024/07/23 20:35:43 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	BitcoinExchange::checkDatabase(std::string buff, char del)
 	if (!ss.eof() || year <= 0 || month <= 0 || day <= 0 || value < 0)
 		return (1);
 
-	if (year < 2009 || year > 2022)
+	if (year < 2009 || year > 2024 || (year == 2009 && month == 1 && day < 2))
 		return (1);
 	
 	if (month > 12)
